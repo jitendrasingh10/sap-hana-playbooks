@@ -1,7 +1,11 @@
 ---
 - name: partition new disk
   hosts: hanas
+  tasks:
+  - name: format disk
   #shell: sudo fdisk /dev/nvme0n1
-  shell: echo -e "\nn\np\n1\n\n\nw" | sudo fdisk /dev/nvme0n1
-  args:
-    executable: /bin/bash
+    shell: echo -e "\nn\np\n1\n\n\nw" | sudo fdisk /dev/nvme0n1
+    args:
+      executable: /bin/bash
+    become: yes
+    
